@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cybersecurity-inspired design system with modern aesthetics */
+
+@layer base {
+  :root {
+    /* Background & surfaces */
+    --background: 220 23% 4%;
+    --surface: 220 20% 6%;
+    --card: 220 18% 8%;
+    --foreground: 210 40% 98%;
+    --card-foreground: 210 40% 96%;
+
+    /* Primary - Cybersecurity blue */
+    --primary: 200 100% 50%;
+    --primary-glow: 200 100% 70%;
+    --primary-foreground: 220 23% 4%;
+
+    /* Secondary - Tech teal */
+    --secondary: 180 100% 45%;
+    --secondary-glow: 180 100% 65%;
+    --secondary-foreground: 220 23% 4%;
+
+    /* Accent - Electric green */
+    --accent: 120 100% 50%;
+    --accent-glow: 120 100% 70%;
+    --accent-foreground: 220 23% 4%;
+
+    /* Warning/Alert - Cyber orange */
+    --warning: 30 100% 55%;
+    --warning-foreground: 220 23% 4%;
+
+    /* Muted colors */
+    --muted: 220 15% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Utility colors */
+    --border: 220 15% 18%;
+    --input: 220 15% 14%;
+    --ring: 200 100% 50%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    --gradient-cyber: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(var(--background)), hsl(var(--surface)));
+
+    /* Shadows & glows */
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.3);
+    --shadow-cyber: 0 10px 40px -10px hsl(var(--primary) / 0.4);
+    --shadow-card: 0 4px 20px hsl(var(--background) / 0.8);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply container mx-auto px-4 py-16 lg:py-24;
+  }
+
+  .cyber-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .cyber-card {
+    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .cyber-card:hover {
+    @apply border-primary/50;
+    box-shadow: var(--shadow-cyber);
+  }
+
+  .gradient-text {
+    background: var(--gradient-cyber);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cyber-button {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: var(--gradient-primary);
+  }
+
+  .cyber-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cyber);
+  }
+
+  .tech-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.1) 2px, transparent 2px);
+    background-size: 50px 50px;
+  }
+
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .typing-animation {
+    animation: typing 3.5s steps(40, end), blink-cursor 0.75s step-end infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid hsl(var(--primary));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+
+  .grid-dots {
+    background-image: radial-gradient(circle, hsl(var(--primary) / 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
